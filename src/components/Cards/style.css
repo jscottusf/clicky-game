@@ -11,15 +11,8 @@
   width: 100%;
 }
 
-.img-container > .remove {
-  color: #ff1744;
-  font-size: 48px;
-  position: absolute;
-  top: -20px;
-  right: 5px;
+.img-container:hover {
+  padding: 10px;
+  border: 2px solid black;
   cursor: pointer;
-}
-
-.img-container > .remove:hover {
-  color: #d50000;
 }
