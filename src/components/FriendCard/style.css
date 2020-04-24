@@ -1,0 +1,25 @@
+.img-container {
+  border-radius: 2px;
+  height: 200px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  overflow: hidden;
+  background: #6caddc;
+}
+.img-container > img {
+  width: 100%;
+}
+
+.img-container > .remove {
+  color: #ff1744;
+  font-size: 48px;
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.img-container > .remove:hover {
+  color: #d50000;
+}
