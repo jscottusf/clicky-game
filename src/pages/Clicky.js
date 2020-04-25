@@ -1,30 +1,28 @@
 import React from 'react';
 import Card from '../components/Cards';
-import friends from '../friends.json';
+import cards from '../cards.json';
 import Header from '../components/Header';
 import GridContainer from '../components/GridContainer';
 
 class Clicky extends React.Component {
   state = {
     score: 0,
-    friends: friends,
+    cards: cards,
+    //status: 'active',
   };
 
   componentDidMount() {
-    this.state.friends.map(friends => (friends.clicked = false));
-    this.shuffle(this.state.friends);
-    this.setState({ friends: this.state.friends });
+    this.state.cards.map(cards => (cards.clicked = false));
+    this.shuffle(this.state.cards);
+    this.setState({ cards: this.state.cards });
   }
 
   //Durstenfeld optimized fisher-yates shuffle algorithm
   shuffle = arr => {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return arr;
   };
 
   handleClickEvent = (id, clicked) => {
@@ -37,7 +35,7 @@ class Clicky extends React.Component {
       this.state.score = 0;
       this.componentDidMount();
     } else {
-      const updatedFriends = this.state.friends.map(friend => {
+      const updatedcards = this.state.cards.map(friend => {
         if (friend.id === id && friend.clicked === false) {
           friend.clicked = true;
           return friend;
@@ -45,10 +43,10 @@ class Clicky extends React.Component {
           return friend;
         }
       });
-      this.shuffle(updatedFriends);
+      this.shuffle(updatedcards);
       let score = this.state.score;
       score++;
-      this.setState({ friends: updatedFriends, score: score });
+      this.setState({ cards: updatedcards, score: score });
     }
   };
 
@@ -57,7 +55,7 @@ class Clicky extends React.Component {
       <div>
         <Header score={this.state.score} />
         <GridContainer>
-          {this.state.friends.map(friend => (
+          {this.state.cards.map(friend => (
             <Card
               key={friend.id}
               id={friend.id}
