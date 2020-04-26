@@ -8,7 +8,9 @@ class Clicky extends React.Component {
   state = {
     score: 0,
     cards: cards,
-    //status: 'active',
+    status: 'Clicky Game! Click any card to begin',
+    highScore: 0,
+    style: 'black',
   };
 
   componentDidMount() {
@@ -27,14 +29,22 @@ class Clicky extends React.Component {
 
   handleClickEvent = (id, clicked) => {
     if (clicked === true) {
-      alert('you already clicked me');
+      this.state.status = 'nope, you clicked that one already';
+      this.state.style = 'red';
+      if (this.state.highScore < this.state.score) {
+        this.state.highScore = this.state.score;
+      }
       this.state.score = 0;
       this.componentDidMount();
     } else if (this.state.score === 11) {
-      alert('WINNER');
+      this.state.style = 'blue';
+      this.state.status = 'winner winner chicken dinner! Try again?';
+      this.state.highScore = 12;
       this.state.score = 0;
       this.componentDidMount();
     } else {
+      this.state.style = 'green';
+      this.state.status = 'nice!';
       const updatedcards = this.state.cards.map(friend => {
         if (friend.id === id && friend.clicked === false) {
           friend.clicked = true;
@@ -46,14 +56,25 @@ class Clicky extends React.Component {
       this.shuffle(updatedcards);
       let score = this.state.score;
       score++;
-      this.setState({ cards: updatedcards, score: score });
+      if (this.state.highScore <= score) {
+        this.state.highScore = score;
+      }
+      this.setState({
+        cards: updatedcards,
+        score: score,
+      });
     }
   };
 
   render() {
     return (
       <div>
-        <Header score={this.state.score} />
+        <Header
+          score={this.state.score}
+          status={this.state.status}
+          highScore={this.state.highScore}
+          style={this.state.style}
+        />
         <GridContainer>
           {this.state.cards.map(friend => (
             <Card
