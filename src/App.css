@@ -1,7 +1,7 @@
 .main-container {
   padding-top: 5px;
   color: #ccff15;
-  background-image: url('/images/backgroundRM.jpg');
+  background-image: url('./backgroundRM.jpg');
   background-size: cover;
   background-position-y: top;
   background-position-x: center;
