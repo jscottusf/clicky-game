@@ -1,6 +1,10 @@
 .main-container {
   padding-top: 5px;
-  background: #eceff1;
+  color: white;
+  background-image: url('/images/backgroundRM.jpg');
+  background-size: cover;
+  background-position-y: top;
+  background-position-x: center;
   height: 100%;
   padding: 0 70px 50px;
   overflow: auto;

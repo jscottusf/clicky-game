@@ -10,7 +10,7 @@ class Clicky extends React.Component {
     cards: cards,
     status: 'Clicky Game! Click any card to begin',
     highScore: 0,
-    style: 'black',
+    style: 'white',
   };
 
   componentDidMount() {
@@ -29,22 +29,38 @@ class Clicky extends React.Component {
 
   handleClickEvent = (id, clicked) => {
     if (clicked === true) {
-      this.state.status = 'nope, you clicked that one already';
-      this.state.style = 'red';
+      const status = 'nope, you clicked that one already';
+      const style = 'red';
       if (this.state.highScore < this.state.score) {
-        this.state.highScore = this.state.score;
+        const highScore = this.state.score;
+        this.setState({ highScore: highScore });
       }
-      this.state.score = 0;
-      this.componentDidMount();
+      const score = 0;
+      this.shuffle(this.state.cards);
+      this.state.cards.map(cards => (cards.clicked = false));
+      this.setState({
+        cards: this.state.cards,
+        status: status,
+        style: style,
+        score: score,
+      });
     } else if (this.state.score === 11) {
-      this.state.style = 'blue';
-      this.state.status = 'winner winner chicken dinner! Try again?';
-      this.state.highScore = 12;
-      this.state.score = 0;
-      this.componentDidMount();
+      const style = 'lightblue';
+      const status = 'winner winner chicken dinner! Try again?';
+      const highScore = 12;
+      const score = 0;
+      this.shuffle(this.state.cards);
+      this.state.cards.map(cards => (cards.clicked = false));
+      this.setState({
+        cards: this.state.cards,
+        status: status,
+        style: style,
+        score: score,
+        highScore: highScore,
+      });
     } else {
-      this.state.style = 'green';
-      this.state.status = 'nice!';
+      const style = 'aquamarine';
+      const status = 'nice!';
       const updatedcards = this.state.cards.map(friend => {
         if (friend.id === id && friend.clicked === false) {
           friend.clicked = true;
@@ -57,11 +73,14 @@ class Clicky extends React.Component {
       let score = this.state.score;
       score++;
       if (this.state.highScore <= score) {
-        this.state.highScore = score;
+        const highScore = score;
+        this.setState({ highScore: highScore });
       }
       this.setState({
         cards: updatedcards,
         score: score,
+        style: style,
+        status: status,
       });
     }
   };

@@ -1,23 +1,23 @@
 [
   {
     "id": 1,
-    "name": "SpongeBob",
-    "image": "/images/SpongeBob.png"
+    "name": "Rick",
+    "image": "/images/rick.jpg"
   },
   {
     "id": 2,
-    "name": "Mr. Krabs",
-    "image": "https://vignette3.wikia.nocookie.net/vsbattles/images/8/80/Mr._Krabs.png/revision/latest?cb=20150919162131"
+    "name": "Birdman",
+    "image": "/images/birdman.jpg"
   },
   {
     "id": 3,
-    "name": "Squidward",
-    "image": "https://vignette2.wikia.nocookie.net/fictionalcharacters/images/a/ac/Squidward.png/revision/latest?cb=20131121012626"
+    "name": "bethclone",
+    "image": "/images/bethclone.jpg"
   },
   {
     "id": 4,
-    "name": "Dexter",
-    "image": "https://s-media-cache-ak0.pinimg.com/originals/fe/32/49/fe32495d45283cd6860ae122f0aeaad9.png"
+    "name": "Evil Morty",
+    "image": "/images/evilmorty.jpg"
   },
   {
     "id": 5,
